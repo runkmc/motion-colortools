@@ -28,6 +28,11 @@ class UIColor
     UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation], brightness:new_brightness, alpha:color_values[:alpha])
   end
 
+  def desaturate(amount)
+    color_values = hsb
+    UIColor.colorWithHue(color_values[:hue], saturation:(color_values[:saturation] - amount), brightness:color_values[:brightness], alpha:color_values[:alpha])
+  end
+
   private
 
   def get_hsb
