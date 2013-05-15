@@ -41,6 +41,11 @@ describe "UIColor" do
     new_color = @test_hsb_color.scale_darken(0.5) 
     new_color.hsb[:brightness].should == (0.5 - (0.5 * 0.5))
   end
+
+  it "should saturate a color" do
+    new_color = @test_hsb_color.saturate(0.25)
+    new_color.hsb[:saturation].should == (0.25 + 0.5)
+  end
   
   it "should desaturate a color" do
     new_color = @test_hsb_color.desaturate(0.2)
