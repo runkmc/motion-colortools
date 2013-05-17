@@ -51,6 +51,10 @@ class UIColor
     color_values = rgb
     UIColor.colorWithRed((color_values[:red] - amount), green:(color_values[:green] - amount), blue:(color_values[:blue] - amount), alpha:color_values[:alpha])
   end
+  
+  def cg
+    self.CGColor
+  end
 
   private
 
