@@ -4,6 +4,10 @@ class UIColor
     get_hsb
   end
 
+  def rgb
+    get_rgb
+  end
+
   def lighten(amount)
     color_values = hsb
     UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation],
@@ -37,6 +41,12 @@ class UIColor
     color_values = hsb
     UIColor.colorWithHue(color_values[:hue], saturation:(color_values[:saturation] + amount), brightness:color_values[:brightness], alpha:color_values[:alpha])
   end
+
+  def tint(amount)
+    color_values = rgb
+    UIColor.colorWithRed((color_values[:red] + amount), green:(color_values[:green] + amount), blue:(color_values[:blue] + amount), alpha:color_values[:alpha])
+  end
+
   private
 
   def get_hsb
@@ -46,6 +56,15 @@ class UIColor
     alpha      = Pointer.new :float
     self.getHue(hue, saturation:saturation, brightness:brightness, alpha:alpha)
     { hue: hue[0], saturation: saturation[0], brightness: brightness[0], alpha: alpha[0] }
+  end
+
+  def get_rgb
+    red   = Pointer.new :float
+    green = Pointer.new :float
+    blue  = Pointer.new :float
+    alpha = Pointer.new :float
+    self.getRed(red, green:green, blue:blue, alpha:alpha)
+    { red: red[0], green: green[0], blue: blue[0], alpha: alpha[0] }
   end
 
 end
