@@ -68,4 +68,13 @@ describe "UIColor" do
     new_color.rgb[:blue].should  == (0.5 + 0.3)
     new_color.rgb[:alpha].should == 0.5
   end
+  
+  it "should shade a color" do
+    new_color = @test_rgb_color.shade(0.3)
+    new_color.rgb[:red].should   == (0.5 - 0.3)
+    new_color.rgb[:green].should == (0.5 - 0.3)
+    new_color.rgb[:blue].should  == (0.5 - 0.3)
+    new_color.rgb[:alpha].should == 0.5
+  end
+
 end
