@@ -13,9 +13,13 @@ class UIColor
   end
 
   def lighten(amount)
-    color_values = hsb
-    UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation],
-                         brightness:(color_values[:brightness] + amount), alpha:color_values[:alpha])
+    if components == 4
+      color_values = hsb
+      UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation], brightness:(color_values[:brightness] + amount), alpha:color_values[:alpha])
+    else
+      color_values = gs
+      UIColor.colorWithWhite((color_values[:white] + amount), alpha:(color_values[:alpha]))
+    end
   end
 
   def scale_lighten(amount)
@@ -26,8 +30,13 @@ class UIColor
   end
 
   def darken(amount)
-    color_values = hsb
-    UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation], brightness:(color_values[:brightness] - amount), alpha:color_values[:alpha])
+    if components == 4
+      color_values = hsb
+      UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation], brightness:(color_values[:brightness] - amount), alpha:color_values[:alpha])
+    else
+      color_values = gs
+      UIColor.colorWithWhite((color_values[:white] - amount), alpha:(color_values[:alpha]))
+    end
   end
 
   def scale_darken(amount)

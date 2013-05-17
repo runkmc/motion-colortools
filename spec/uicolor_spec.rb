@@ -22,6 +22,12 @@ describe "UIColor" do
     comps[:alpha].should == 0.5
   end
 
+  it "should get grayscale values" do
+    comps = @test_grayscale_color.gs
+    comps[:white].should == 0.5
+    comps[:alpha].should == 0.5
+  end
+
   it "should lighten a color" do
     new_color = @test_hsb_color.lighten(0.2)
     new_color.hsb[:brightness].should == (0.5 + 0.2)
@@ -30,6 +36,11 @@ describe "UIColor" do
   it "should cap lighten at 1.0" do
     new_color = @test_hsb_color.lighten(0.9)
     new_color.hsb[:brightness].should == 1.0
+  end
+
+  it "should lighten a grayscale color" do
+    new_color = @test_grayscale_color.lighten(0.3)
+    new_color.gs[:white].should == (0.5 + 0.3)
   end
 
   it "should also scale_lighten" do
@@ -45,6 +56,11 @@ describe "UIColor" do
   it "should cap darken at 0.0" do
     new_color = @test_hsb_color.darken(0.9)
     new_color.hsb[:brightness].should == 0.0
+  end
+
+  it "should darken a grayscale color" do
+    new_color = @test_grayscale_color.darken(0.3)
+    new_color.gs[:white].should == (0.5 - 0.3)
   end
 
   it "should also scale_darken" do
