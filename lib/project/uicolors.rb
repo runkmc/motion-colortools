@@ -62,6 +62,13 @@ class UIColor
 
   private
 
+  def get_grayscale
+    white = Pointer.new :float
+    alpha = Pointer.new :float
+    self.getWhite(white, alpha:alpha)
+    {white: white[0], alpha: alpha[0] }
+  end
+
   def get_hsb
     hue        = Pointer.new :float
     saturation = Pointer.new :float

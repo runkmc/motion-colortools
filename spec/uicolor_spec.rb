@@ -3,6 +3,7 @@ describe "UIColor" do
   before do
     @test_hsb_color = UIColor.colorWithHue(0.5, saturation:0.5, brightness:0.5, alpha:0.5)
     @test_rgb_color = UIColor.colorWithRed(0.5, green:0.5, blue:0.5, alpha:0.5)
+    @test_grayscale_color = UIColor.colorWithWhite(0.5, alpha:0.5)
   end
 
   it "should get hsb values" do
