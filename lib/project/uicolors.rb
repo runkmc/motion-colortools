@@ -8,6 +8,10 @@ class UIColor
     get_rgb
   end
 
+  def gs
+    get_grayscale
+  end
+
   def lighten(amount)
     color_values = hsb
     UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation],
