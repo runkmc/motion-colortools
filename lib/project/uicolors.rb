@@ -56,6 +56,10 @@ class UIColor
     self.CGColor
   end
 
+  def components
+    CGColorGetNumberOfComponents(self.cg)
+  end
+
   private
 
   def get_hsb
