@@ -48,6 +48,11 @@ describe "UIColor" do
     new_color.hsb[:brightness].should == (0.5 + (0.5 * 0.5))
   end
 
+  it "should scale_lighten a grayscale color" do
+    new_color = @test_grayscale_color.scale_lighten(0.5)
+    new_color.gs[:white].should == (0.5 + (0.5 * 0.5))
+  end
+
   it "should darken a color" do
     new_color = @test_hsb_color.darken(0.2)
     new_color.hsb[:brightness].should == (0.5 - 0.2)
@@ -66,6 +71,11 @@ describe "UIColor" do
   it "should also scale_darken" do
     new_color = @test_hsb_color.scale_darken(0.5) 
     new_color.hsb[:brightness].should == (0.5 - (0.5 * 0.5))
+  end
+
+  it "should scale_darken a grayscale color" do
+    new_color = @test_grayscale_color.scale_darken(0.5)
+    new_color.gs[:white].should == (0.5 - (0.5 * 0.5))
   end
 
   it "should saturate a color" do

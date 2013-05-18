@@ -22,10 +22,17 @@ class UIColor
   end
 
   def scale_lighten(amount)
-    color_values = hsb
-    diff = 1.0 - hsb[:brightness]
-    new_brightness = color_values[:brightness] + (diff * amount)
-    UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation], brightness:new_brightness, alpha:color_values[:alpha])
+    if components == 4
+      color_values = hsb
+      diff = 1.0 - color_values[:brightness]
+      new_brightness = color_values[:brightness] + (diff * amount)
+      UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation], brightness:new_brightness, alpha:color_values[:alpha])
+    else
+      color_values = gs
+      diff = 1.0 - color_values[:white]
+      new_brightness = color_values[:white] + (diff * amount)
+      UIColor.colorWithWhite(new_brightness, alpha:(color_values[:alpha]))
+    end
   end
 
   def darken(amount)
@@ -38,9 +45,15 @@ class UIColor
   end
 
   def scale_darken(amount)
-    color_values = hsb
-    new_brightness = color_values[:brightness] - (color_values[:brightness] * amount)
-    UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation], brightness:new_brightness, alpha:color_values[:alpha])
+    if components == 4
+      color_values = hsb
+      new_brightness = color_values[:brightness] - (color_values[:brightness] * amount)
+      UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation], brightness:new_brightness, alpha:color_values[:alpha])
+    else
+      color_values = gs
+      new_brightness = color_values[:white] - (color_values[:white] * amount)
+      UIColor.colorWithWhite(new_brightness, alpha:(color_values[:alpha]))
+    end
   end
 
   def desaturate(amount)
