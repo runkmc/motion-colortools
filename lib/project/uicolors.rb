@@ -33,8 +33,7 @@ class UIColor
       color_values = hsb
       UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation], brightness:(color_values[:brightness] - amount), alpha:color_values[:alpha])
     else
-      color_values = gs
-      UIColor.colorWithWhite((color_values[:white] - amount), alpha:(color_values[:alpha]))
+      self.shade(amount)
     end
   end
 
@@ -65,8 +64,14 @@ class UIColor
   end
 
   def shade(amount)
-    color_values = rgb
-    UIColor.colorWithRed((color_values[:red] - amount), green:(color_values[:green] - amount), blue:(color_values[:blue] - amount), alpha:color_values[:alpha])
+    if components == 4
+      color_values = rgb
+      UIColor.colorWithRed((color_values[:red] - amount), green:(color_values[:green] - amount), blue:(color_values[:blue] - amount), alpha:color_values[:alpha])
+    else
+      color_values = gs
+      UIColor.colorWithWhite((color_values[:white] - amount), alpha:(color_values[:alpha]))
+    end
+
   end
   
   def cg
