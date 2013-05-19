@@ -1,13 +1,12 @@
 # -*- encoding: utf-8 -*-
-VERSION = "1.0"
 
 Gem::Specification.new do |spec|
   spec.name          = "motion-colortools"
-  spec.version       = VERSION
+  spec.version       = MotionColorTools::Version
   spec.authors       = ["Kevin McGladdery"]
   spec.email         = ["kevin.mcgladdery@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{A set of methods for UIColor to darken, lighten, tint, shade, saturate and desaturate existing colors.}
+  spec.summary       = %q{A set of utility methods added to the UIColor class for manipulating colors.}
   spec.homepage      = ""
   spec.license       = ""
 

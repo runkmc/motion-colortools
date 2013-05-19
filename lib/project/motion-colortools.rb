@@ -1,5 +1,3 @@
-module Motion
-  class ColorTools
+module MotionColorTools
     Version = "0.1.0"
-  end
 end
