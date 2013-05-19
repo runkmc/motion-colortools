@@ -7,10 +7,11 @@ Gem::Specification.new do |spec|
   spec.email         = ["kevin.mcgladdery@gmail.com"]
   spec.description   = %q{A set of methods for UIColor to darken, lighten, tint, shade, saturate and desaturate existing colors.}
   spec.summary       = %q{A set of utility methods added to the UIColor class for manipulating colors.}
-  spec.homepage      = ""
+  spec.homepage      = "http://github.com/runkmc/motion-colortools"
   spec.license       = ""
 
   files = []
+  files << 'LICENSE'
   files << 'README.md'
   files.concat(Dir.glob('lib/**/*.rb'))
   spec.files         = files
