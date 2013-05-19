@@ -88,6 +88,18 @@ describe "UIColor" do
     new_color.hsb[:saturation].should == (0.5 - 0.2)
   end
 
+  it "should do nothing if you try to saturate or desaturate a grayscale color" do
+    new_color = @test_grayscale_color
+    new_color.desaturate(0.2).should == new_color
+    new_color.saturate(0.2).should == new_color
+  end
+
+  it "should return grayscale? as true on a grayscale color" do
+    @test_rgb_color.grayscale?.should == false
+    @test_hsb_color.grayscale?.should == false
+    @test_grayscale_color.grayscale?.should == true
+  end
+
   it "should tint a color" do
     new_color = @test_rgb_color.tint(0.3)
     new_color.rgb[:red].should   == (0.5 + 0.3)
