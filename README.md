@@ -4,7 +4,7 @@ This gem provides some methods for manipulating UIColors in Rubymotion.
 
 Examples:
 
-The `lighten` and `darken` methods adjust a color's brightness by a fixed amount:
+`lighten` and `darken`:
 ```ruby
 test_color = UIColor.colorWithHue(0.5, saturation:0.5, brightness:0.5, alpha:1.0)
 
@@ -20,7 +20,7 @@ test_color.darken(0.2) # new brightness value of 0.3
 
 
 
-The `scale_lighten` and `scale_darken` methods adjust brightness based on a percentage of the color's current brightness level:
+`scale_lighten` and `scale_darken`:
 ```ruby
 
 # scale_lighten and scale_darken each take a float between 0.0 and 1.0 as a percentage.
@@ -38,7 +38,7 @@ test_color.scale_darken(0.5) # new brightness value of 0.4
 
 `saturate` and `desaturate`:
 ```ruby
-# saturate and desaturate work much line lighten and darken, only they adjust... saturation.
+# saturate and desaturate work much line lighten and darken.
 
 test_color = UIColor.colorWithHue(0.5, saturation:0.5, brightness:0.5, alpha:1.0)
 test_color.saturate(0.3) # new saturation value of 0.8
@@ -48,7 +48,7 @@ test_color.desaturate(0.3) # new saturation value of 0.2
 
 
 
-`tint` and `shade` might sound like they do the same thing as `lighten` and `darken`, but there is an important difference:
+`tint` and `shade`:
 ```ruby
 # rather than just adjusting brightness, tint and shade mix white and black into the 
 # color, respectively. They each take a float between 0.0 and 1.0, representing
