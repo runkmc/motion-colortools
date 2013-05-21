@@ -15,7 +15,9 @@ class UIColor
   def lighten(amount)
     if components == 4
       color_values = hsb
-      UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation], brightness:(color_values[:brightness] + amount), alpha:color_values[:alpha])
+      new_brightness = color_values[:brightness] + amount
+      options = {brightness: new_brightness}
+      adjust_hsb(options)
     else
       self.tint(amount)
     end
@@ -26,7 +28,8 @@ class UIColor
       color_values = hsb
       diff = 1.0 - color_values[:brightness]
       new_brightness = color_values[:brightness] + (diff * amount)
-      UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation], brightness:new_brightness, alpha:color_values[:alpha])
+      options = {brightness: new_brightness}
+      adjust_hsb(options)
     else
       color_values = grayscale
       diff = 1.0 - color_values[:white]
@@ -38,7 +41,9 @@ class UIColor
   def darken(amount)
     if components == 4
       color_values = hsb
-      UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation], brightness:(color_values[:brightness] - amount), alpha:color_values[:alpha])
+      new_brightness = color_values[:brightness] - amount
+      options = {brightness: new_brightness}
+      adjust_hsb(options)
     else
       self.shade(amount)
     end
@@ -48,7 +53,8 @@ class UIColor
     if components == 4
       color_values = hsb
       new_brightness = color_values[:brightness] - (color_values[:brightness] * amount)
-      UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation], brightness:new_brightness, alpha:color_values[:alpha])
+      options = {brightness: new_brightness}
+      adjust_hsb(options)
     else
       color_values = grayscale
       new_brightness = color_values[:white] - (color_values[:white] * amount)
@@ -59,13 +65,17 @@ class UIColor
   def desaturate(amount)
     return self if components == 2
     color_values = hsb
-    UIColor.colorWithHue(color_values[:hue], saturation:(color_values[:saturation] - amount), brightness:color_values[:brightness], alpha:color_values[:alpha])
+    new_saturation = color_values[:saturation] - amount
+    options = {saturation: new_saturation}
+    adjust_hsb(options)
   end
 
   def saturate(amount)
     return self if components == 2
     color_values = hsb
-    UIColor.colorWithHue(color_values[:hue], saturation:(color_values[:saturation] + amount), brightness:color_values[:brightness], alpha:color_values[:alpha])
+    new_saturation = color_values[:saturation] + amount
+    options = {saturation: new_saturation}
+    adjust_hsb(options)
   end
 
   def tint(amount)
@@ -127,6 +137,12 @@ class UIColor
     alpha = Pointer.new :float
     self.getRed(red, green:green, blue:blue, alpha:alpha)
     { red: red[0], green: green[0], blue: blue[0], alpha: alpha[0] }
+  end
+
+  def adjust_hsb(options)
+    defaults = hsb
+    new_values = defaults.merge(options)
+      UIColor.colorWithHue(new_values[:hue], saturation:new_values[:saturation], brightness:(new_values[:brightness]), alpha:new_values[:alpha])
   end
 
 end
