@@ -8,7 +8,7 @@ class UIColor
     get_rgb
   end
 
-  def gs
+  def grayscale
     get_grayscale
   end
 
@@ -28,7 +28,7 @@ class UIColor
       new_brightness = color_values[:brightness] + (diff * amount)
       UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation], brightness:new_brightness, alpha:color_values[:alpha])
     else
-      color_values = gs
+      color_values = grayscale
       diff = 1.0 - color_values[:white]
       new_brightness = color_values[:white] + (diff * amount)
       UIColor.colorWithWhite(new_brightness, alpha:(color_values[:alpha]))
@@ -50,7 +50,7 @@ class UIColor
       new_brightness = color_values[:brightness] - (color_values[:brightness] * amount)
       UIColor.colorWithHue(color_values[:hue], saturation:color_values[:saturation], brightness:new_brightness, alpha:color_values[:alpha])
     else
-      color_values = gs
+      color_values = grayscale
       new_brightness = color_values[:white] - (color_values[:white] * amount)
       UIColor.colorWithWhite(new_brightness, alpha:(color_values[:alpha]))
     end
@@ -73,7 +73,7 @@ class UIColor
       color_values = rgb
       UIColor.colorWithRed((color_values[:red] + amount), green:(color_values[:green] + amount), blue:(color_values[:blue] + amount), alpha:color_values[:alpha])
     else
-      color_values = gs
+      color_values = grayscale
       UIColor.colorWithWhite((color_values[:white] + amount), alpha:(color_values[:alpha]))
     end
   end
@@ -83,7 +83,7 @@ class UIColor
       color_values = rgb
       UIColor.colorWithRed((color_values[:red] - amount), green:(color_values[:green] - amount), blue:(color_values[:blue] - amount), alpha:color_values[:alpha])
     else
-      color_values = gs
+      color_values = grayscale
       UIColor.colorWithWhite((color_values[:white] - amount), alpha:(color_values[:alpha]))
     end
 

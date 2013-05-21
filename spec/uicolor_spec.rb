@@ -23,7 +23,7 @@ describe "UIColor" do
   end
 
   it "should get grayscale values" do
-    comps = @test_grayscale_color.gs
+    comps = @test_grayscale_color.grayscale
     comps[:white].should == 0.5
     comps[:alpha].should == 0.5
   end
@@ -40,7 +40,7 @@ describe "UIColor" do
 
   it "should lighten a grayscale color" do
     new_color = @test_grayscale_color.lighten(0.3)
-    new_color.gs[:white].should == (0.5 + 0.3)
+    new_color.grayscale[:white].should == (0.5 + 0.3)
   end
 
   it "should also scale_lighten" do
@@ -50,7 +50,7 @@ describe "UIColor" do
 
   it "should scale_lighten a grayscale color" do
     new_color = @test_grayscale_color.scale_lighten(0.5)
-    new_color.gs[:white].should == (0.5 + (0.5 * 0.5))
+    new_color.grayscale[:white].should == (0.5 + (0.5 * 0.5))
   end
 
   it "should darken a color" do
@@ -65,7 +65,7 @@ describe "UIColor" do
 
   it "should darken a grayscale color" do
     new_color = @test_grayscale_color.darken(0.3)
-    new_color.gs[:white].should == (0.5 - 0.3)
+    new_color.grayscale[:white].should == (0.5 - 0.3)
   end
 
   it "should also scale_darken" do
@@ -75,7 +75,7 @@ describe "UIColor" do
 
   it "should scale_darken a grayscale color" do
     new_color = @test_grayscale_color.scale_darken(0.5)
-    new_color.gs[:white].should == (0.5 - (0.5 * 0.5))
+    new_color.grayscale[:white].should == (0.5 - (0.5 * 0.5))
   end
 
   it "should saturate a color" do
