@@ -97,11 +97,12 @@ class UIColor
     self.CGColor
   end
 
+
+  private
+
   def components
     CGColorGetNumberOfComponents(self.cg)
   end
-
-  private
 
   def get_grayscale
     white = Pointer.new :float
