@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+require File.expand_path('../lib/project/motion-colortools.rb', __FILE__)
 
 Gem::Specification.new do |spec|
   spec.name          = "motion-colortools"
