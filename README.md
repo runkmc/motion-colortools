@@ -2,6 +2,8 @@
 
 This gem provides some methods for manipulating UIColors in Rubymotion.
 
+To be clear, these methods don't change UIColors, they return new instances of UIColor.
+
 Examples:
 
 `lighten` and `darken`:
