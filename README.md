@@ -13,10 +13,10 @@ test_color = UIColor.colorWithHue(0.5, saturation:0.5, brightness:0.5, alpha:1.0
 # Each of these methods takes one float between 0.0 and 1.0 
 
 # increase brightness by 0.2 
-test_color.lighten(0.2) # new brightness value of 0.7
+test_color.lighten(0.2) # returns a new UIColor with a brightness value of 0.7
 
 # or darken it by 0.2 
-test_color.darken(0.2) # new brightness value of 0.3
+test_color.darken(0.2) # returns a new UIColor with a brightness value of 0.3
 ```
 
 
@@ -28,11 +28,11 @@ test_color.darken(0.2) # new brightness value of 0.3
 # scale_lighten and scale_darken each take a float between 0.0 and 1.0 as a percentage.
 # scale_lighten lightens a color by 50% of the difference between the color's current brightness and 1.0, so:  
 test_color = UIColor.colorWithHue(0.5, saturation:0.5, brightness:0.8, alpha:1.0)
-test_color.scale_lighten(0.5) # new brightness value of 0.9 
+test_color.scale_lighten(0.5) # returns a new UIColor with a brightness value of 0.9 
 
 #scale_darken does the inverse:
 test_color = UIColor.colorWithHue(0.5, saturation:0.5, brightness:0.8, alpha:1.0)
-test_color.scale_darken(0.5) # new brightness value of 0.4
+test_color.scale_darken(0.5) # returns a new UIColor with a brightness value of 0.4
 ```
 
 
@@ -43,8 +43,8 @@ test_color.scale_darken(0.5) # new brightness value of 0.4
 # saturate and desaturate work much line lighten and darken.
 
 test_color = UIColor.colorWithHue(0.5, saturation:0.5, brightness:0.5, alpha:1.0)
-test_color.saturate(0.3) # new saturation value of 0.8
-test_color.desaturate(0.3) # new saturation value of 0.2
+test_color.saturate(0.3) # returns a new UIColor with a saturation value of 0.8
+test_color.desaturate(0.3) # returns a new UIColor with a saturation value of 0.2
 ```
 
 
@@ -59,11 +59,11 @@ test_color.desaturate(0.3) # new saturation value of 0.2
 
 test_color = UIColor.colorWithHue(0.5, saturation:0.5, brightness:0.5, alpha:1.0)
 test_color.tint(0.2)	
-# new values: hue=>0.5, :saturation=>0.35, :brightness=>0.69, :alpha=>1.0
+# new UIColor object with values: hue=>0.5, :saturation=>0.35, :brightness=>0.69, :alpha=>1.0
 
 # shade does the inverse:
 test_color.shade(0.2)
-# new values: hue=>0.5, :saturation=>0.83, :brightness=>0.29, :alpha=>1.0
+# new UIColor object with values: hue=>0.5, :saturation=>0.83, :brightness=>0.29, :alpha=>1.0
 ```
 
 
